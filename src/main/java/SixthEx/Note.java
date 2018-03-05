@@ -1,5 +1,9 @@
 package SixthEx;
 
+/**
+ * @author ritt
+ */
+
 class Note {
         private String text;
 

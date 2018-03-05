@@ -1,5 +1,8 @@
 package SixthEx;
 
+/**
+ * @author ritt
+ */
 public class Notebook {
         private int capacity;
         private Note[] notes;
@@ -15,10 +18,15 @@ public class Notebook {
                 return capacity;
         }
 
+
         public int getIndexForAddNote() {
                 return indexForAddNote;
         }
 
+        /**
+         * Add one note, that contains specified text
+         * @param text - content for new note
+         */
         public void addNote(String text) {
                 if (indexForAddNote < capacity) {
                         add(text, indexForAddNote);
@@ -27,6 +35,11 @@ public class Notebook {
                 }
         }
 
+        /**
+         * Add one note, that contains specified text
+         * @param text - content for new note
+         * @param index - position in the notebook for new note
+         */
         public void addNote(String text, int index) {
                 if (indexForAddNote < capacity && index < capacity && index >= 0) {
                         System.arraycopy(notes, index, notes, index+1, capacity-index-1);
@@ -36,6 +49,9 @@ public class Notebook {
                 }
         }
 
+        /**
+         * Delete one last note in the notebook
+         */
         public void deleteLast() {
                 if (indexForAddNote == 0) {
                         System.out.println("Notebook is empty.");
@@ -45,6 +61,11 @@ public class Notebook {
         }
 
         // remove first occasion
+
+        /**
+         * Delete first note that contains same string like your's
+         * @param text - note's content
+         */
         public void deleteNote(String text) {
                 for (int i = 0; i < indexForAddNote; i++) {
                         Note temp = notes[i];
@@ -56,6 +77,10 @@ public class Notebook {
                  System.out.printf("Note \"%s\" doesn't found.\n", text);
         }
 
+        /**
+         * Delete note that located by specified index
+         * @param index - note's index, starts with 0
+         */
         public void deleteNote(int index) {
                 if (index < capacity && index >= 0) {
                         del(index);
@@ -64,6 +89,11 @@ public class Notebook {
                 System.out.printf("Note[%d] doesn't found.\n", index);
         }
 
+        /**
+         * Edit note's content in notebook that located by specified index
+         * @param newText - new content for the note
+         * @param index  - note's index, start with 0
+         */
         public void edit(String newText, int index) {
                 if (index < capacity && index >= 0) {
                         notes[index].setText(newText);
@@ -72,6 +102,9 @@ public class Notebook {
                 System.out.printf("Note[%d] doesn't found.\n", index);
         }
 
+        /**
+         * Show all notes from the notebook
+         */
         public void show() {
                 int i=0;
                 for (; i < indexForAddNote; i++) {
@@ -85,11 +118,20 @@ public class Notebook {
                 // Notebook notebook = new Notebook(5);
         }
 
+        /**
+         * private local function for 'add'
+         * @param text - note's content
+         * @param index - note's index
+         */
         private void add(String text, int index) {
                 notes[index] = new Note(text);
                 indexForAddNote++;
         }
 
+        /**
+         *  private local function for 'delete'
+         * @param index - note's index
+         */
         private void del(int index) {
                 System.arraycopy(notes, index + 1, notes, index, capacity-index-1);
                 indexForAddNote--;
