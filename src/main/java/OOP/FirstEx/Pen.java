@@ -1,7 +1,8 @@
 package OOP.FirstEx;
 
-
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Pen {
     public enum PenType {
@@ -35,11 +36,19 @@ public class Pen {
     }
 
     public void write(String text) {
-
+        writeLine(10);
+        System.out.println(text);
+        writeLine(10);
     }
 
     public void writeLine(int lineLength) {
+        if (lineLength <= 0) return;
 
+        String line = Stream.generate(() -> "-")
+                .limit(lineLength)
+                .collect(Collectors.joining());
+
+        System.out.println(line);
     }
 
     @Override
@@ -62,5 +71,10 @@ public class Pen {
                 "penType=" + penType +
                 ", color=" + color +
                 '}';
+    }
+
+    public static void main(String... args) {
+        Pen pen = new Pen(PenType.GEL_PEN, 100);
+        pen.write("text");
     }
 }
