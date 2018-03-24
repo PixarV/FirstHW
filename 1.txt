@@ -1,0 +1,2 @@
+javac -d out/ -cp src/main/java/ src/main/java/FirstEx/javase01/t01/main/Main.java
+java -cp out/ FirstEx.javase01.t01.main.Main

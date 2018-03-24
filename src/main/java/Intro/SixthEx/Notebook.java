@@ -1,4 +1,4 @@
-package SixthEx;
+package Intro.SixthEx;
 
 /**
  * @author ritt
