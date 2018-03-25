@@ -11,6 +11,7 @@ public class Pen {
         FOUNTAIN_PEN,
         DEFAULT // unknown writing object
     }
+
     private PenType penType;
     private int color;
 
