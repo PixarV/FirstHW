@@ -66,7 +66,20 @@ public class Workplace {
         return cost;
     }
 
-    public static void main(String[] args) {
+    /**
+     * Demonstrates table's content
+     */
+    public void show() {
+        for (Map.Entry<OfficeItem, Integer> item : table.entrySet())
+            System.out.printf("%s: %d\n", item.getKey(), item.getValue());
+    }
 
+    public static void main(String[] args) {
+        Workplace work = new Workplace("ritt");
+
+        work.addItems(OfficeItem.CLIP,
+                OfficeItem.PENCIL,
+                OfficeItem.PENCIL,
+                OfficeItem.SCISSORS);
     }
 }

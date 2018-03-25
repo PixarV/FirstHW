@@ -36,12 +36,20 @@ public class Pen {
         this.color = color;
     }
 
+    /**
+     * Write text, that's all
+     * @param text
+     */
     public void write(String text) {
-        writeLine(10);
         System.out.println(text);
         writeLine(10);
     }
 
+
+    /**
+     * Write line from symbol '-' with preset length
+     * @param lineLength
+     */
     public void writeLine(int lineLength) {
         if (lineLength <= 0) return;
 
