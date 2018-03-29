@@ -10,7 +10,7 @@ public class Workplace {
      * Create empty workplace which is assigned to the "nickname"
      * @param nickname employee's nickname
      */
-    Workplace(String nickname) {
+    public Workplace(String nickname) {
         this.nickname = nickname;
         table = new EnumMap<OfficeItem, Integer>(OfficeItem.class);
     }
