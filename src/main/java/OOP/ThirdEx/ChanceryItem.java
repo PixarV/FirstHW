@@ -1,7 +1,7 @@
 package OOP.ThirdEx;
 
 public abstract class ChanceryItem {
-    private String owner;
+    protected String owner;
 
     public String getOwner() {
         return owner;

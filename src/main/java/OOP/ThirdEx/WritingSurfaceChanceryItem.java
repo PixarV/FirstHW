@@ -4,7 +4,7 @@ public abstract class WritingSurfaceChanceryItem extends ChanceryItem {
     private int color;
     private double width;
     private double height;
-    private char lineSymbol;
+    private char lineSymbol = '-';
     protected int numLines;
     protected boolean lined;
 
