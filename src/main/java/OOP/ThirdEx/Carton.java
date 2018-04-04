@@ -42,4 +42,5 @@ public class Carton extends WritingSurfaceChanceryItem {
             this.numLines = numLines / 2;
         lined = (numLines > 0);
     }
+
 }
