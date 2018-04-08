@@ -1,12 +1,11 @@
 package OOP.SixthEx;
 
+@ImportantInfoAboutShipyard("Trouble")
 public class NuclearPoweredBoat {
-    private String name;
     private boolean swim;
     private BoatEngine engine;
 
-    public NuclearPoweredBoat(String name, double power) {
-        this.name = name;
+    public NuclearPoweredBoat(double power) {
         engine = new BoatEngine(power);
     }
 
@@ -41,11 +40,20 @@ public class NuclearPoweredBoat {
         }
     }
 
+    public static void printAnnotationInfo() {
+        ImportantInfoAboutShipyard info = NuclearPoweredBoat.class
+                .getDeclaredAnnotation(ImportantInfoAboutShipyard.class);
+        System.out.printf("We started from shipyard named \"%s\" that manages by captain %s.\n",
+                info.value(), info.captain());
+    }
+
     public static void main(String... args) {
-        NuclearPoweredBoat boat = new NuclearPoweredBoat("ritt", 4.2);
+        NuclearPoweredBoat boat = new NuclearPoweredBoat(4.2);
         boat.ready();
         System.out.println(boat.isSwim());
         boat.brake();
+        NuclearPoweredBoat.printAnnotationInfo();
+
     }
 
 }
