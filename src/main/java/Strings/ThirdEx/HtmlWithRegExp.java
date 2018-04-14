@@ -1,18 +1,14 @@
 package Strings.ThirdEx;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class HtmlWithRegExp {
     public static void main(String[] args) {
-//        Pattern img = Pattern.compile("<img");
-//        Matcher m = img.
         ClassLoader classLoader = HtmlWithRegExp.class.getClassLoader();
         try (BufferedReader br =
                      new BufferedReader(
