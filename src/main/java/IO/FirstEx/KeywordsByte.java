@@ -1,7 +1,6 @@
 package IO.FirstEx;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashMap;
 
 public class KeywordsByte {
@@ -18,7 +17,9 @@ public class KeywordsByte {
                      KeywordsByte.class.getResourceAsStream("/io/keywords")) {
             keywords = new String(keywordsStream.readAllBytes()).split("[ \n]");
         } catch (IOException e) {
-            throw new RuntimeException("Smth wrong with keywords file", e);
+            throw new RuntimeException("Smh wrong with keywords file", e);
+        } catch (NullPointerException e) {
+            throw new RuntimeException("keywords doesn't exist in resources.", e);
         }
     }
 
@@ -27,7 +28,7 @@ public class KeywordsByte {
             dict.put(keyword.trim(), 0);
     }
 
-    public static HashMap<String, Integer> getKeywordsInfoForFile(String filename) {
+    public static void getKeywordsInfoForFile(String filename) {
         createAndCleanMap();
         try (InputStream input =
                      KeywordsByte.class.getResourceAsStream("/io/"+filename)) {
@@ -44,13 +45,37 @@ public class KeywordsByte {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Smth wrong with " + filename + " file", e);
+            throw new RuntimeException("Smh wrong with " + filename + " file", e);
+        } catch (NullPointerException e) {
+            throw new RuntimeException(filename + " doesn't exist in resources.", e);
         }
-        return dict;
+
+        addKeywordsInfo();
+    }
+
+    private static void addKeywordsInfo() {
+        try(OutputStream output = new FileOutputStream("answer")) {
+            byte[] bytes = getStringFromMap().getBytes();
+            output.write(bytes);
+            output.flush();
+        } catch (IOException e) {
+            throw new RuntimeException("Smh wrong with answer file", e);
+        }
+    }
+
+    private static String getStringFromMap() {
+        StringBuilder temp = new StringBuilder();
+        dict.forEach((key, value) -> {
+            temp.append(key);
+            temp.append(" ");
+            temp.append(value);
+            temp.append("\n");
+        });
+        return temp.toString();
     }
 
     public static void main(String[] args) {
-        HashMap<String, Integer> mass = KeywordsByte.getKeywordsInfoForFile("ConsoleApplication.java");
-        mass.forEach((key, value) -> System.out.printf("%s %d\n", key, value));
+        KeywordsByte.getKeywordsInfoForFile("ConsoleApplication.java");
     }
+
 }
