@@ -23,7 +23,7 @@ public class KeywordsByte {
         }
     }
 
-    private static void createAndCleanMap() {
+    public static void createAndCleanMap() {
         for (String keyword : keywords)
             dict.put(keyword.trim(), 0);
     }
@@ -54,16 +54,16 @@ public class KeywordsByte {
     }
 
     private static void addKeywordsInfo() {
-        try(OutputStream output = new FileOutputStream("answer")) {
+        try(OutputStream output = new FileOutputStream("answerByte")) {
             byte[] bytes = getStringFromMap().getBytes();
             output.write(bytes);
             output.flush();
         } catch (IOException e) {
-            throw new RuntimeException("Smh wrong with answer file", e);
+            throw new RuntimeException("Smh wrong with answerByte file", e);
         }
     }
 
-    private static String getStringFromMap() {
+    public static String getStringFromMap() {
         StringBuilder temp = new StringBuilder();
         dict.forEach((key, value) -> {
             temp.append(key);
