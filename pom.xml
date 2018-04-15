@@ -33,6 +33,17 @@
             <version>RELEASE</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <!--<version>LATEST</version>-->
+            <version>1.16.20</version>
+            <scope>provided</scope>
+        </dependency>
+
+
         <!--<dependency>-->
             <!--<groupId>junit</groupId>-->
             <!--<artifactId>junit.jar</artifactId>-->
@@ -77,21 +88,22 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>
-                                com.epam.spb.chr.courses.java.fundamentals.feb.oop.MainClass
-                            </mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-jar-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<archive>-->
+                        <!--<manifest>-->
+                            <!--<addClasspath>true</addClasspath>-->
+                            <!--<classpathPrefix>libs/</classpathPrefix>-->
+                            <!--<mainClass>-->
+                                <!--com.epam.spb.chr.courses.java.fundamentals.feb.oop.MainClass-->
+                            <!--</mainClass>-->
+                        <!--</manifest>-->
+                    <!--</archive>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
         </plugins>
     </build>
 
