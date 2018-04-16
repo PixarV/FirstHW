@@ -103,11 +103,6 @@ public class ConsoleApplication {
         }
     }
 
-    private static void console(String command, String argument) {
-
-    }
-
-
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
 
