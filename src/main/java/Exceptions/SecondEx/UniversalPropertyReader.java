@@ -24,11 +24,11 @@ public class UniversalPropertyReader {
         }
     }
 
-    public Object getProperty(Object key) {
+    public String getProperty(String key) {
         if (properties.get(key) == null) {
             throw new RuntimeException("Key does't exist.");
         }
-        return properties.get(key);
+        return (String) properties.get(key);
     }
 
     public static void main(String... args) {
@@ -36,6 +36,4 @@ public class UniversalPropertyReader {
         upr.getPropertiesFromFile("random");
         System.out.println(upr.getProperty("age"));
     }
-
-
 }
