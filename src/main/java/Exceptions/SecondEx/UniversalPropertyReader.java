@@ -10,13 +10,17 @@ import java.util.Properties;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UniversalPropertyReader {
     Properties properties = new Properties();
+    String filename = "";
 
     public UniversalPropertyReader() {}
 
     public void getPropertiesFromFile(String filename) {
         String withProp = String.format("/%s.properties", filename);
+        if (this.filename.equals(filename))
+            return;
         try(InputStream input = UniversalPropertyReader.class.getResourceAsStream(withProp)) {
             properties.load(input);
+            this.filename = filename;
         } catch (NullPointerException e) {
             throw new RuntimeException("File doesn't exist.", e);
         } catch (IOException e) {

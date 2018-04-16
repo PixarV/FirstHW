@@ -19,7 +19,7 @@ public class MoneyTransactionsLock {
     }
 
     @SneakyThrows
-    public static  void addTransaction(TransactionContent transaction) {
+    public static void addTransaction(TransactionContent transaction) {
         Lock lock = new ReentrantLock();
         lock.lock();
         try (BufferedWriter writer = new BufferedWriter(

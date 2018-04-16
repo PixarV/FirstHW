@@ -12,7 +12,7 @@ public class MoneyTransactionSync {
     private MoneyTransactionSync() {}
 
     @SneakyThrows
-    public static BufferedReader getTransactions() {
+    public static synchronized BufferedReader getTransactions() {
         return new BufferedReader(new FileReader("transactions"));
     }
 
