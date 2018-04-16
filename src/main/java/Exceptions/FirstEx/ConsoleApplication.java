@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.io.*;
 import java.nio.file.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*
@@ -51,7 +52,7 @@ public class ConsoleApplication {
     }
 
     /**
-     * create a file (if
+     * create a file
      * @param filename
      */
     private static void touch(String filename) {
@@ -65,6 +66,10 @@ public class ConsoleApplication {
         }
     }
 
+    /**
+     * delete a file
+     * @param filename
+     */
     private static void rm(String filename) {
         Path filepath = Paths.get(currentDirectory.toString(), filename);
         try {
@@ -76,6 +81,12 @@ public class ConsoleApplication {
         }
     }
 
+    /**
+     * write to file some text
+     * @param filename
+     * @param text
+     * @param append if true - text append to file, false - rewrite it
+     */
     private static void writeToFile(String filename, String text, boolean append) {
         Path filepath = Paths.get(currentDirectory.toString(), filename);
 
@@ -98,15 +109,6 @@ public class ConsoleApplication {
 
 
     public static void main(String... args) {
-//        pwd();
-//        cd(Paths.get("src/main/java/OOP/"));
-//        cd(Paths.get("/home/ritt/IdeaProjects/FirstHW"));
-//        ls();
-//
-//        touch("probe");
-//        writeToFile("probe", "first", true);
-//        writeToFile("probe", "second", false);
-//        rm("probe");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -153,27 +155,37 @@ public class ConsoleApplication {
                 }
 
                 case "wr": {
-//                    if (parts.length == 1) {
-//                        System.out.println("Invalid format. Indicate the filename.");
-//                        break;
-//                    }
+                    if (parts.length < 2) {
+                        System.out.println("Invalid format. Indicate the filename.");
+                        break;
+                    }
 
                     String[] specialCommand = line.split("\"");
-                    String filename = specialCommand[0].trim();
+                    String filename = (specialCommand.length == 3) ? specialCommand[2].trim()
+                            : specialCommand[1].trim();
 
+                    String text = (specialCommand.length == 3) ? specialCommand[1]
+                            : "";
 
-
-                    rm(parts[1]);
+                    System.out.println("Append (true) or rewrite (false)?");
+                    try {
+                        boolean bool  = scanner.nextBoolean();
+                        writeToFile(filename, text, bool);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Only \"true\" or \"false\".");
+                    }
                     break;
                 }
 
                 default: {
-
+                    System.out.println("Unknown command.");
                 }
 
                 case "help": {
+                    System.out.println("help");
                     break;
                 }
+
             }
         }
     }
