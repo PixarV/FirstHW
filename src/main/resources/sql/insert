@@ -1,0 +1,4 @@
+insert into Person (nick, name, surname, age) values ('ritt', 'Rita', 'Fedotova', 20);
+insert into Person (nick, name, surname, age) values ('lenn', 'Lena', 'Fedotova', 18);
+insert into Person (nick, name, surname, age) values ('igor', 'Igor', 'Anohin', 18);
+

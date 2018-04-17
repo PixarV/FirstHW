@@ -43,13 +43,13 @@
             <scope>provided</scope>
         </dependency>
 
-
-        <!--<dependency>-->
-            <!--<groupId>junit</groupId>-->
-            <!--<artifactId>junit.jar</artifactId>-->
-            <!--<version>LATEST</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
