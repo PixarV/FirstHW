@@ -5,12 +5,13 @@ import lombok.SneakyThrows;
 import java.util.Random;
 
 public class WriteTransactionsThread extends Thread {
+    private boolean run = true;
     @Override
     @SneakyThrows
     public void run() {
         Random random = new Random();
 
-        while(true) {
+        while(run) {
             int from = random.nextInt(8999) + 1000;
             int to = random.nextInt(8999) + 1000;
             double amount = random.nextDouble()*100;
@@ -22,9 +23,24 @@ public class WriteTransactionsThread extends Thread {
         }
     }
 
+    public void stopThread() {
+        run = false;
+    }
+
+    @SneakyThrows
     public static void main(String... args) {
-        new WriteTransactionsThread().start();
-        new WriteTransactionsThread().start();
-        new WriteTransactionsThread().start();
+        WriteTransactionsThread t1 = new WriteTransactionsThread();
+        WriteTransactionsThread t2 = new WriteTransactionsThread();
+        WriteTransactionsThread t3 = new WriteTransactionsThread();
+
+        t1.start();
+        t2.start();
+        t3.start();
+
+        Thread.sleep(100);
+
+        t1.stopThread();
+        t2.stopThread();
+        t3.stopThread();
     }
 }
